@@ -1,0 +1,60 @@
+body {
+        padding-top: 54px;
+     }
+
+a {
+	color:  #343a40;
+}
+a:hover {
+	color: #FFFFFF;
+}
+
+
+#logo {
+	width: 6rem;
+	max-width: 15%;
+	margin-right: 15px;
+}
+
+
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+.footer ul {
+	padding:15px;
+}
+
+[class^="fa"] {
+	padding:10px 15px 10px 0;
+}
+
+.bg-light {
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1200px) and (min-width: 993px) {
+	.landscapeScale {
+						zoom: 0.8;
+						/*-moz-transform: scale(0.9);*/
+						/*-moz-margin-top: -15px;*/
+					}
+	@-moz-document url-prefix() {
+    .summaryText {
+        font-size:0.75rem;
+    }
+}				
+}
+
+
+@media (min-width: 992px) {
+        body {
+          padding-top: 56px;
+        }
+      }
+

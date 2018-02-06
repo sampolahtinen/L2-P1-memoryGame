@@ -1,5 +1,4 @@
 // Handling button click //
-const blueButton = document.getElementsByClassName('btn-info');
 
 // Reset Button //
 
@@ -18,7 +17,14 @@ function resetGameFunc() {
 	});
 }
 
-resetGameBtn.addEventListener('click',resetGameFunc);
+// Timer //
+let timer = document.querySelector('.timer');
+let seconds = 0;
+setInterval(function() {
+	seconds++;
+	timer.innerHTML = seconds
+},1000);
+
 resetIcon.addEventListener('click',resetGameFunc);
 // This is an alternative way of handling clicks. Assign event handler to each card and call it
 // within cardClickHandler using this. property
@@ -37,19 +43,21 @@ document.querySelector('.deck').addEventListener('click',cardClickHandler);
 
 let clickCtr = 0;
 let starTrack = document.querySelector('.stars');
+let cardsOpenArr = document.querySelectorAll('.open');
 
 function cardClickHandler(event) {
-	event.target.classList.add("open");
-	let cardsOpenArr = document.querySelectorAll('.open');
 	if (event.target.nodeName.toLowerCase() === 'li') {
+		event.target.classList.add("open");
+		cardsOpenArr = document.querySelectorAll('.open');
 		clickCtr++;
 	}
 	if (cardsOpenArr.length == 2 && cardsOpenArr[0].firstElementChild.classList[1]  === cardsOpenArr[1].firstElementChild.classList[1]) {
-			console.log("these are the same");
+			setTimeout(function() {
 				cardsOpenArr[0].classList.add('match');			
 				cardsOpenArr[0].classList.remove('open');
 				cardsOpenArr[1].classList.add('match');
 				cardsOpenArr[1].classList.remove('open');
+			},700);
 		} else if (cardsOpenArr.length >= 2) {
 				setTimeout(function(){
 					cardsOpenArr[0].classList.remove("open");

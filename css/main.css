@@ -47,7 +47,7 @@ hr {
 }
 
 .deck {
-    width: 660px;
+    width: 100%;
     min-height: 680px;
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
     padding: 32px;
@@ -77,22 +77,42 @@ hr {
 .deck .card.open {
 	transform: rotateY(0);
 	font-size: 45pt;
-	background-color: grey;
+	background-color: #80808000;
+    animation: rotateY 0.5s 1 linear;
 }
+
+@keyframes rotateY {
+   to { transform: rotateY(180deg); }
+}
+
 
 .deck .card.match {
-	background-color: green;
+	background-color: #008026c7;
 	font-size: 45pt;
+    animation: positiveNudge 0.3s linear 1 alternate;
 
 }
 
+@keyframes positiveNudge {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  
+  50% {
+    transform: translate(0, 50px);
+  }
+  
+  80% {
+    transform: translate(0, -50px);
+  }
+}
 /*
  * Styles for the Score Panel
  */
- 
+
 .score-panel {
     text-align: left;
-    width: 97%;
+    width: 100%;
     margin-bottom: 10px;
 }
 
@@ -106,6 +126,10 @@ hr {
 .score-panel .stars li {
     list-style: none;
     display: inline-block;
+}
+
+.timer {
+	font-size: 2rem;
 }
 
 .score-panel .restart {

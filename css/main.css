@@ -1,3 +1,5 @@
+/*GENERAL*/
+
 body {
         padding-top: 54px;
      }
@@ -9,15 +11,6 @@ a:hover {
 	color: #FFFFFF;
 }
 
-
-#logo {
-	width: 6rem;
-	max-width: 15%;
-	margin-right: 15px;
-}
-
-
-
 hr {
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -26,6 +19,41 @@ hr {
     background-color: white;
 }
 
+/**/
+
+/*LOGO*/
+
+#logo {
+	width: 6rem;
+	max-width: 15%;
+	margin-right: 15px;
+}
+/**/
+
+/*Memory Cards*/
+.memoryCard {
+	display: inline-flex;
+	flex-direction: row;
+	box-sizing: border-box;
+	border: 1px solid;
+	height: 140.5px;
+	width: 20%;
+	background-color: #343a3ff0;
+	margin: 10px;
+	animation-name: example;
+	animation-duration: 4s;
+}
+
+.flip-card {
+	background-color: white;
+}
+
+@keyframes example {
+	from {right: -100px;}
+	to {right: 0;}
+}
+
+/*FOOTER*/
 .footer ul {
 	padding:15px;
 }
@@ -51,10 +79,8 @@ hr {
 }				
 }
 
-
 @media (min-width: 992px) {
         body {
           padding-top: 56px;
         }
       }
-

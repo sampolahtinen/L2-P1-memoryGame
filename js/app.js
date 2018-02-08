@@ -1,10 +1,19 @@
-// Handling button click //
+// Window Onload
+//window.onload = shuffleCards();
+
 
 // Reset Button //
-
-const resetGameBtn = document.getElementById('reset-game');
 const resetIcon = document.querySelector('.restart');
 
+// Shuffle unction //
+function shuffleCards() {
+	let deck = document.querySelector('.deck');
+	for (let i = 0; i < deck.children.length; i++) {
+		deck.appendChild(deck.children[Math.random() * i | 0]);
+	}
+}
+
+// Reset game function
 function resetGameFunc() {
 	document.querySelector('.moves').textContent = 0;
 	starTrack.childNodes[1].firstElementChild.classList.remove('fa-star-o');
@@ -15,7 +24,11 @@ function resetGameFunc() {
 	matchClasses.forEach(function(elem){
 		elem.classList.remove('match');
 	});
+	shuffleCards();
 }
+
+resetIcon.addEventListener('click',resetGameFunc);
+resetIcon.addEventListener('click',shuffleCards);
 
 // Timer //
 let timer = document.querySelector('.timer');
@@ -25,7 +38,7 @@ setInterval(function() {
 	timer.innerHTML = seconds
 },1000);
 
-resetIcon.addEventListener('click',resetGameFunc);
+
 // This is an alternative way of handling clicks. Assign event handler to each card and call it
 // within cardClickHandler using this. property
 
@@ -36,14 +49,14 @@ resetIcon.addEventListener('click',resetGameFunc);
 	})*/ 
 
 // Assign click handler to whole card deck
-
 document.querySelector('.deck').addEventListener('click',cardClickHandler);
 
 // Card Click Handler
-
 let clickCtr = 0;
 let starTrack = document.querySelector('.stars');
 let cardsOpenArr = document.querySelectorAll('.open');
+let cardsMatched = document.querySelectorAll('.match');
+let matchedCards = 0;
 
 function cardClickHandler(event) {
 	if (event.target.nodeName.toLowerCase() === 'li') {
@@ -57,7 +70,9 @@ function cardClickHandler(event) {
 				cardsOpenArr[0].classList.remove('open');
 				cardsOpenArr[1].classList.add('match');
 				cardsOpenArr[1].classList.remove('open');
+				matchedCards++;
 			},700);
+			
 		} else if (cardsOpenArr.length >= 2) {
 				setTimeout(function(){
 					cardsOpenArr[0].classList.remove("open");
@@ -75,4 +90,9 @@ function cardClickHandler(event) {
 	if (clickCtr >= 36) {
 		starTrack.childNodes[5].firstElementChild.classList.add('fa-star-o');
 	}
+	if (matchedCards == 1) {
+				setTimeout(function() {
+					alert("you won the game");
+				},1300);
+			}
 }

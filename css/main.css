@@ -47,7 +47,7 @@ hr {
 }
 
 .deck {
-    width: 100%;
+    width: 640px;
     min-height: 680px;
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
     padding: 32px;
@@ -112,7 +112,7 @@ hr {
 
 .score-panel {
     text-align: left;
-    width: 100%;
+    width: 640px;
     margin-bottom: 10px;
 }
 
@@ -130,6 +130,7 @@ hr {
 
 .timer {
 	font-size: 2rem;
+    margin-left: 100px;
 }
 
 .score-panel .restart {

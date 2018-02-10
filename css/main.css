@@ -46,6 +46,10 @@ hr {
 	background-color: white;
 }
 
+.start-btn {
+    padding: 10px 15px 10px 15px;
+}
+
 .deck {
     width: 640px;
     min-height: 680px;
@@ -58,6 +62,7 @@ hr {
     justify-content: space-between;
     align-items: center;
     margin: 0 0 3em;
+    z-index: 1;
 }
 
 .deck .card {
@@ -74,9 +79,14 @@ hr {
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
+.start-game .card {
+    background: #2e3d4973;
+
+}
+
 .deck .card.open {
 	transform: rotateY(0);
-	font-size: 45pt;
+	font-size: 35pt;
 	background-color: #80808000;
     animation: rotateY 0.5s 1 linear;
 }
@@ -88,10 +98,11 @@ hr {
 
 .deck .card.match {
 	background-color: #008026c7;
-	font-size: 45pt;
+	font-size: 40pt;
     animation: positiveNudge 0.3s linear 1 alternate;
 
 }
+
 
 @keyframes positiveNudge {
   0%, 100% {
@@ -138,7 +149,62 @@ hr {
     cursor: pointer;
 }
 
+/*MODAL*/
+/* The Modal (background) */
 
+.winning-modal-bg {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+
+/* Modal Content/Box */
+.winning-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 10px;
+    border: 1px solid #888;
+    background: white;
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.8);
+}
+
+.stats-container {
+    padding-top: 40px;
+}
+
+.score-info {
+    padding-bottom: 30px;
+}
+
+/* The Close Button */
+.close {
+    padding-bottom: 10px;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.play-again {
+    margin-top: 15px;
+}
 
 /*FOOTER*/
 .footer ul {
@@ -146,7 +212,7 @@ hr {
 }
 
 [class^="fa"] {
-	padding:10px 15px 10px 0;
+	/*padding:10px 15px 10px 0;*/
 }
 
 .bg-light {

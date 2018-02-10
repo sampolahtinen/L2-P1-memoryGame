@@ -46,83 +46,97 @@
     </nav>
 
     <!-- Page Content -->
-<!--     <div class="container mt-5">
+    <div class="container mt-5">
       <div class="row">
         <div class="col-md-12 text-center">
-    	  <button class="btn-info">Play!</button>
-        <button class="btn-info" id="reset-game">RESET</button>
+    	  <button class="btn-info start-btn">Play!</button>
        </div>
       </div>
-    </div> -->
-
-    <div class="container">
-    <div class="col-lg-12 col-xl-12 text-center">
-    <section class="score-panel">
-          <ul class="stars">
-            <li><i class="fa fa-star"></i></li>
-            <li><i class="fa fa-star"></i></li>
-            <li><i class="fa fa-star"></i></li>
-            <li><span class="moves col-md-3">0 Moves</span></li>
-            <li><span class="timer">0</span></li>
-          </ul>
-          <div class="restart text-right">
-            <i class="fa fa-repeat"></i>
-          </div>
-    </section>
-
-     <ul class="deck">
-            <li class="card">
-                <i class="fa fa-diamond"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-paper-plane-o"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-anchor"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-bolt"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-cube"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-anchor"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-leaf"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-bicycle"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-diamond"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-bomb"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-leaf"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-bomb"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-bolt"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-bicycle"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-paper-plane-o"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-cube"></i>
-            </li>
-        </ul>
-        </div>
     </div>
 
+    <div class="container visible">
+      <div class="col-lg-12 col-xl-12 text-center">
+        <section class="score-panel">
+              <ul class="stars">
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><span class="moves col-md-3">0 Moves</span></li>
+                <li><span class="timer">0</span></li>
+              </ul>
+              <div class="restart text-right">
+                <i class="fa fa-repeat"></i>
+              </div>
+        </section>
+          <ul class="deck start-game">
+                <li class="card">
+                    <i class="fa fa-diamond"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-paper-plane-o"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-anchor"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-bolt"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-cube"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-anchor"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-leaf"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-bicycle"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-diamond"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-bomb"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-leaf"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-bomb"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-bolt"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-bicycle"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-paper-plane-o"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-cube"></i>
+                </li>
+          </ul>
+      </div>
+    </div>
+
+    <!-- The Modal -->
+    <div class="container-fluid winning-modal-bg">
+
+      <!-- Modal content -->
+      <div class="winning-content">
+        <span class="close">&times;</span>
+          <div class="stats-container text-center">
+          <span><i class="fa fa-trophy fa-5x"></i></span>
+          <h2>You won!</h2>
+          <span class="score-info"></span>
+          <div><h4 class="final-score"></h4></div>
+          <button class="btn-info play-again">Play Again?</button>
+          </div>
+      </div>
+
+    </div>
     
     <footer class="footer bg-light">
       <div class="container">

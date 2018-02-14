@@ -1,5 +1,5 @@
 // Window Onload
-window.onload = shuffleCards();
+//window.onload = shuffleCards();
 
 //Start Game Button
 const startContainer = document.querySelector('.start');
@@ -78,15 +78,6 @@ function finalScore(clicks) {
 	if(clicks > 16) {
 		score = score - (clicks-16);
 	}
-	/*if (clickCtr > 16) {
-		score = 70;
-	}
-	if (clickCtr > 30 && clickCtr < 50) {
-		score = 50;
-	}
-	if (clickCtr > 50) {
-		score = 0;
-	}*/
 	return score;
 }
 
@@ -98,10 +89,17 @@ let cardsMatched = document.querySelectorAll('.match');
 let matchedCards = 0;
 
 function cardClickHandler(event) {
+	if (event.target.classList.contains("match")===true) // if cards are matched, jump out of function
+		{
+			return;
+		}
 	if (event.target.nodeName.toLowerCase() === 'li') {
 		event.target.classList.add("open");
 		cardsOpenArr = document.querySelectorAll('.open');
-		clickCtr++;
+		if (event.target.classList.contains("disableClick") === false ) { //increases click counter if the target does not have disableClick class
+			clickCtr++;
+		}
+		event.target.classList.add("disableClick");
 	}
 	if (cardsOpenArr.length == 2 && cardsOpenArr[0].firstElementChild.classList[1]  === cardsOpenArr[1].firstElementChild.classList[1]) {
 			setTimeout(function() {
@@ -117,18 +115,18 @@ function cardClickHandler(event) {
 				setTimeout(function(){
 					cardsOpenArr[0].classList.remove("open");
 					cardsOpenArr[1].classList.remove("open");
+					cardsOpenArr[0].classList.remove("disableClick");
+					cardsOpenArr[1].classList.remove("disableClick");
+
 				},900);
 		}
 	document.querySelector('.moves').textContent = clickCtr + ' Moves';
 
-	if(clickCtr > 16) {
+	if(clickCtr > 20) {
 		starTrack.childNodes[1].firstElementChild.classList.add('fa-star-o');
 	}
-	if (clickCtr >= 26) {
-		starTrack.childNodes[3].firstElementChild.classList.add('fa-star-o');
-	}
 	if (clickCtr >= 36) {
-		starTrack.childNodes[5].firstElementChild.classList.add('fa-star-o');
+		starTrack.childNodes[3].firstElementChild.classList.add('fa-star-o');
 	}
 }
 

@@ -2,12 +2,14 @@
 window.onload = shuffleCards();
 
 //Start Game Button
-const startBtn = document.querySelector('.start-btn');
-startBtn.addEventListener('click',initiateGame);
+const startContainer = document.querySelector('.start');
+startContainer.addEventListener('click',initiateGame);
 function initiateGame() {
 	document.querySelector('.deck').classList.remove('start-game');
 	// Assign click handler to whole card deck
 	document.querySelector('.deck').addEventListener('click',cardClickHandler);
+	startContainer.style.display = 'none';
+
 	startTimer();
 }
 
@@ -49,7 +51,7 @@ function startTimer() {
 	seconds = 0;
 	timerCounter = setInterval(function() {
 	seconds++;
-	timer.innerHTML = seconds
+	timer.innerHTML = seconds+"s"
 },1000);
 }
 
@@ -58,7 +60,7 @@ let winningModal = document.querySelector('.winning-modal-bg');
 //Check Game End
 function isGameEnded() {
 	let cardsMatched = document.querySelectorAll('.match');
-	if (cardsMatched.length === 16) {
+	if (cardsMatched.length === 2) {
 		winningModal.style.display = 'inline-flex';
 		document.querySelector('.score-info').innerHTML = "..with " + clickCtr + " moves..in..." + seconds + " seconds...";
 		document.querySelector('.final-score').innerHTML ="...with final Score of...\n" + finalScore();
@@ -137,12 +139,3 @@ closeModal.addEventListener('click', () => {	winningModal.style.display = 'none'
 
 winningModal.addEventListener('click', () => {	winningModal.style.display = 'none';
 });
-
-// This is an alternative way of handling clicks. Assign event handler to each card and call it
-// within cardClickHandler using this. property
-
-	//const cardArray = document.querySelectorAll('.card')
-
-	/*cardArray.forEach(function(elem) {
-		elem.addEventListener('click',cardClickHandler);
-	})*/ 

@@ -28,24 +28,6 @@ hr {
 }
 /**/
 
-/*Memory Cards*/
-.memoryCard {
-	display: inline-flex;
-	flex-direction: row;
-	box-sizing: border-box;
-	border: 1px solid;
-	height: 140.5px;
-	width: 20%;
-	background-color: #343a3ff0;
-	margin: 10px;
-	animation-name: example;
-	animation-duration: 4s;
-}
-
-.flip-card {
-	background-color: white;
-}
-
 .start {
     margin-top: -100px;
     width: 640px;
@@ -58,7 +40,7 @@ hr {
     padding: 10px 15px 10px 15px;
     font-size: 2rem;
     border: 1px solid white;
-    border-color: #0c5460ba;
+    border-color: #0c5460;
     background-color: #0c5460;
     height: 100px;
     text-transform: uppercase;
@@ -176,7 +158,6 @@ hr {
     font-size: 1.5rem;
 }
 
-
 /*MODAL*/
 /* The Modal (background) */
 
@@ -193,12 +174,11 @@ hr {
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-
 /* Modal Content/Box */
 .winning-content {
     background-color: #fefefe;
     width: 400px;
-    height: 400px;
+    height: 450px;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 10px;
     border: 1px solid #888;
@@ -210,6 +190,10 @@ hr {
 
 .stats-container {
     padding-top: 40px;
+}
+
+.stats-container h4 {
+    padding-top: 10px;
 }
 
 .score-info {
@@ -234,6 +218,7 @@ hr {
 
 .play-again {
     margin-top: 40px;
+    padding: 15px;
 }
 
 .final-score {
@@ -245,25 +230,8 @@ hr {
 	padding:15px;
 }
 
-[class^="fa"] {
-	/*padding:10px 15px 10px 0;*/
-}
-
 .bg-light {
 	border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-@media (max-width: 1200px) and (min-width: 993px) {
-	.landscapeScale {
-						zoom: 0.8;
-						/*-moz-transform: scale(0.9);*/
-						/*-moz-margin-top: -15px;*/
-					}
-	@-moz-document url-prefix() {
-    .summaryText {
-        font-size:0.75rem;
-    }
-}				
 }
 
 @media (min-width: 992px) {

@@ -60,21 +60,25 @@ let winningModal = document.querySelector('.winning-modal-bg');
 //Check Game End
 function isGameEnded() {
 	let cardsMatched = document.querySelectorAll('.match');
-	if (cardsMatched.length === 2) {
+	if (cardsMatched.length === 16) {
 		winningModal.style.display = 'inline-flex';
 		document.querySelector('.score-info').innerHTML = "..with " + clickCtr + " moves..in..." + seconds + " seconds...";
-		document.querySelector('.final-score').innerHTML ="...with final Score of...\n" + finalScore();
+		document.querySelector('.final-score').innerHTML = finalScore(clickCtr)+"!";
 		clearInterval(timerCounter);
 	}
 }
 
 // Calculate Final Score based on Moves
-function finalScore() {
-	let score;
-	if(clickCtr < 16) {
+function finalScore(clicks) {
+	let score = 100;
+
+	if(clicks < 16) {
 		score = 100;
 	}
-	if (clickCtr > 16) {
+	if(clicks > 16) {
+		score = score - (clicks-16);
+	}
+	/*if (clickCtr > 16) {
 		score = 70;
 	}
 	if (clickCtr > 30 && clickCtr < 50) {
@@ -82,7 +86,7 @@ function finalScore() {
 	}
 	if (clickCtr > 50) {
 		score = 0;
-	}
+	}*/
 	return score;
 }
 

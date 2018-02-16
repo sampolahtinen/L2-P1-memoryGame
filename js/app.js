@@ -1,5 +1,5 @@
-// Window Onload
-//window.onload = shuffleCards();
+// Window Onload Shuffle
+window.onload = shuffleCards();
 
 //Start Game Button
 const startContainer = document.querySelector('.start');
@@ -56,7 +56,7 @@ function startTimer() {
 }
 
 let winningModal = document.querySelector('.winning-modal-bg');
-
+let endStars = document.querySelector('.end-stars');
 //Check Game End
 function isGameEnded() {
 	let cardsMatched = document.querySelectorAll('.match');
@@ -64,6 +64,9 @@ function isGameEnded() {
 		winningModal.style.display = 'inline-flex';
 		document.querySelector('.score-info').innerHTML = "..with " + clickCtr + " moves..in..." + seconds + " seconds...";
 		document.querySelector('.final-score').innerHTML = finalScore(clickCtr)+"!";
+		let cloneStarTrack = starTrack.cloneNode(true); // clones the star track from score panel
+		cloneStarTrack.removeChild(cloneStarTrack.lastElementChild) //removes the score panel "moves" before appending to winning modal.
+		endStars.appendChild(cloneStarTrack); // appending stars to modal
 		clearInterval(timerCounter);
 	}
 }
@@ -122,7 +125,7 @@ function cardClickHandler(event) {
 		}
 	document.querySelector('.moves').textContent = clickCtr + ' Moves';
 
-	if(clickCtr > 20) {
+	if(clickCtr > 0) { //was 20
 		starTrack.childNodes[1].firstElementChild.classList.add('fa-star-o');
 	}
 	if (clickCtr >= 36) {

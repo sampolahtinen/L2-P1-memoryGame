@@ -178,7 +178,7 @@ hr {
 .winning-content {
     background-color: #fefefe;
     width: 400px;
-    height: 450px;
+    height: 470px;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 10px;
     border: 1px solid #888;
@@ -199,6 +199,18 @@ hr {
 .score-info {
     padding-bottom: 30px;
 }
+
+.end-stars .stars {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+.end-stars .stars li {
+    list-style: none;
+    display: inline-block;
+}
+
 
 /* The Close Button */
 .close {

@@ -10,7 +10,7 @@ Star rating displays how well a player is doing. It gives a player a gut feeling
 
 ## Final score
 The game tracks the count of clicks and seconds. The game ends once all the cards have been matched. The amount of clicks affects the final score.
-If clicks <= 16, final score = 100
-If clicks > 16, final score = 100 - (clicks - 16)
+> If clicks <= 16, final score = 100
+> If clicks > 16, final score = 100 - (clicks - 16)
 
 

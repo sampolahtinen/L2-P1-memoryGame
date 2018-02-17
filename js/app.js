@@ -4,10 +4,13 @@ window.onload = shuffleCards();
 //Start Game Button
 const startContainer = document.querySelector('.start');
 startContainer.addEventListener('click',initiateGame);
+let deck = document.querySelector('.deck');
+
 function initiateGame() {
-	document.querySelector('.deck').classList.remove('start-game');
+	deck = document.querySelector('.deck');
+	deck.classList.remove('start-game');
 	// Assign click handler to whole card deck
-	document.querySelector('.deck').addEventListener('click',cardClickHandler);
+	deck.addEventListener('click',cardClickHandler);
 	startContainer.style.display = 'none';
 
 	startTimer();
@@ -18,6 +21,7 @@ const resetIcon = document.querySelector('.restart');
 resetIcon.addEventListener('click',resetGameFunc,shuffleCards);
 
 // Shuffle unction //
+
 function shuffleCards() {
 	let deck = document.querySelector('.deck');
 	for (let i = 0; i < deck.children.length; i++) {
@@ -38,8 +42,8 @@ function resetGameFunc() {
 	winningModal.style.display = 'none';
 	seconds = 0;
 	document.querySelector('.timer').innerHTML = seconds;
-	clickCtr = 0;
-	document.querySelector('.moves').textContent = clickCtr + ' Moves';
+	clickCounter = 0;
+	document.querySelector('.moves').textContent = clickCounter + ' Moves';
 	startTimer();
 	clearInterval(timerCounter);
 }
@@ -62,8 +66,8 @@ function isGameEnded() {
 	let cardsMatched = document.querySelectorAll('.match');
 	if (cardsMatched.length === 16) {
 		winningModal.style.display = 'inline-flex';
-		document.querySelector('.score-info').innerHTML = "..with " + clickCtr + " moves..in..." + seconds + " seconds...";
-		document.querySelector('.final-score').innerHTML = finalScore(clickCtr)+"!";
+		document.querySelector('.score-info').innerHTML = "..with " + clickCounter + " moves..in..." + seconds + " seconds...";
+		document.querySelector('.final-score').innerHTML = finalScore(clickCounter)+"!";
 		let cloneStarTrack = starTrack.cloneNode(true); // clones the star track from score panel
 		cloneStarTrack.removeChild(cloneStarTrack.lastElementChild) //removes the score panel "moves" before appending to winning modal.
 		endStars.appendChild(cloneStarTrack); // appending stars to modal
@@ -85,13 +89,15 @@ function finalScore(clicks) {
 }
 
 // Card Click Handler
-let clickCtr = 0;
+let clickCounter = 0;
 let starTrack = document.querySelector('.stars');
 let cardsOpenArr = document.querySelectorAll('.open');
 let cardsMatched = document.querySelectorAll('.match');
 let matchedCards = 0;
 
 function cardClickHandler(event) {
+	let deck = document.querySelector('.deck');
+
 	if (event.target.classList.contains("match")===true) // if cards are matched, jump out of function
 		{
 			return;
@@ -99,10 +105,14 @@ function cardClickHandler(event) {
 	if (event.target.nodeName.toLowerCase() === 'li') {
 		event.target.classList.add("open");
 		cardsOpenArr = document.querySelectorAll('.open');
+			if (cardsOpenArr.length === 2) {
+					deck.removeEventListener('click',cardClickHandler);
+			}
 		if (event.target.classList.contains("disableClick") === false ) { //increases click counter if the target does not have disableClick class
-			clickCtr++;
+			clickCounter++;
 		}
-		event.target.classList.add("disableClick");
+	event.target.classList.add("disableClick");
+
 	}
 	if (cardsOpenArr.length == 2 && cardsOpenArr[0].firstElementChild.classList[1]  === cardsOpenArr[1].firstElementChild.classList[1]) {
 			setTimeout(function() {
@@ -110,6 +120,7 @@ function cardClickHandler(event) {
 				cardsOpenArr[0].classList.remove('open');
 				cardsOpenArr[1].classList.add('match');
 				cardsOpenArr[1].classList.remove('open');
+				deck.addEventListener('click', cardClickHandler);
 				matchedCards++;
 				isGameEnded();
 			},700);
@@ -120,17 +131,18 @@ function cardClickHandler(event) {
 					cardsOpenArr[1].classList.remove("open");
 					cardsOpenArr[0].classList.remove("disableClick");
 					cardsOpenArr[1].classList.remove("disableClick");
-
+					deck.addEventListener('click', cardClickHandler);				
 				},900);
 		}
-	document.querySelector('.moves').textContent = clickCtr + ' Moves';
+	document.querySelector('.moves').textContent = clickCounter + ' Moves';
 
-	if(clickCtr > 0) { //was 20
+	if(clickCounter > 16) { //was 20
 		starTrack.childNodes[1].firstElementChild.classList.add('fa-star-o');
 	}
-	if (clickCtr >= 36) {
+	if (clickCounter >= 36) {
 		starTrack.childNodes[3].firstElementChild.classList.add('fa-star-o');
 	}
+
 }
 
 //Play Again button in Winning Modal window
